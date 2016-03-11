@@ -4,10 +4,11 @@ The buttons with animations is fun and attracting users. Especially, natural eff
 
 ![](https://github.com/quangtqag/WobbleBubbleButton/blob/master/Screenshots/preview.gif)
 
-## Usage
-* WobbleBubbleButton was inherited from UIButton, so you can set its properties as normal buttons
+## Features
+* WobbleBubbleButton was inherited from UIButton, so you can set its properties as normal buttons.
+* Support @IBDesignable, so you can see it directly in interface builder.
 
-### Code
+## Usage
 
 You need to import WobbleBubbleButton into place that you want to use
 
