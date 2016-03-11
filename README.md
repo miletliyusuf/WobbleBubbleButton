@@ -49,6 +49,27 @@ Then, run the following command:
 $ pod install
 ```
 
+### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+
+You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate WobbleBubbleButton into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "quangtqag/WobbleBubbleButton" ~> 0.0.5
+```
+
+Run `carthage update` to build the framework and drag the built `WobbleBubbleButton.framework` into your Xcode project.
+
+*There is a bug in Xcode 7.2 when you use WobbleBubbleButton in interface builder at this time. You need to set Custom Class and Module to WobbleBubbleButton manually since Xcode did not automatically complete it for you.*
+
 ## Requirements
 
 - iOS 8.0+
