@@ -8,9 +8,9 @@
 
 import UIKit
 
-class WobbleBubbleButton: UIButton {
+public class WobbleBubbleButton: UIButton {
   
-  override func awakeFromNib() {
+  override public func awakeFromNib() {
     addAnimationForView(self)
   }
   
@@ -91,7 +91,7 @@ class WobbleBubbleButton: UIButton {
   // Refering on https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ApplicationKit/Classes/NSColor_Class/#//apple_ref/occ/instm/NSColor/blendedColorWithFraction:ofColor:
   // http://stackoverflow.com/questions/32293210/no-visible-interface-for-uicolor-declares-the-selector-blendedcolorwithfract
   //
-  override func drawRect(rect: CGRect) {
+  override public func drawRect(rect: CGRect) {
     //// PaintCode Trial Version
     //// www.paintcodeapp.com
     
