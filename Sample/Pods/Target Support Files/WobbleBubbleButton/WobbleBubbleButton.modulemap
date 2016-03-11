@@ -1,0 +1,6 @@
+framework module WobbleBubbleButton {
+  umbrella header "WobbleBubbleButton-umbrella.h"
+
+  export *
+  module * { export * }
+}
