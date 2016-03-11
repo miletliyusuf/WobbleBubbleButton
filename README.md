@@ -2,6 +2,9 @@
 Create wobble bubble buttons that same as in Game Center, although it does not look like much. Written by Swift.
 The buttons with animations is fun and attracting users. Especially, natural effects is more attractive.
 
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/WobbleBubbleButton.svg)](https://img.shields.io/cocoapods/v/WobbleBubbleButton.svg)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 ![](https://github.com/quangtqag/WobbleBubbleButton/blob/master/Screenshots/preview.gif)
 
 ## Features
