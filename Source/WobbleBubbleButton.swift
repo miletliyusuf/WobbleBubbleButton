@@ -8,6 +8,7 @@
 
 import UIKit
 
+@IBDesignable
 public class WobbleBubbleButton: UIButton {
   
   override public func awakeFromNib() {
@@ -22,9 +23,6 @@ public class WobbleBubbleButton: UIButton {
   //  Refering on http://stackoverflow.com/questions/23927047/button-animate-like-ios-game-center-button
   //
   private func addAnimationForView(view: UIView) {
-    
-    view.clipsToBounds = true
-    view.layer.cornerRadius = view.frame.size.width/2
     
     //create an animation to follow a circular path
     let pathAnimation = CAKeyframeAnimation(keyPath: "position")
@@ -92,6 +90,10 @@ public class WobbleBubbleButton: UIButton {
   // http://stackoverflow.com/questions/32293210/no-visible-interface-for-uicolor-declares-the-selector-blendedcolorwithfract
   //
   override public func drawRect(rect: CGRect) {
+    
+    clipsToBounds = true
+    layer.cornerRadius = frame.size.width/2
+    
     //// PaintCode Trial Version
     //// www.paintcodeapp.com
     
@@ -103,7 +105,7 @@ public class WobbleBubbleButton: UIButton {
     let whiteTransparent = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.000)
     let black = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
     let grey = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.727)
-    let backgroundColor = self.backgroundColor ?? UIColor(red: 0.000, green: 0.849, blue: 1.000, alpha: 1.000)
+    let backgroundColor = self.backgroundColor ?? UIColor.clearColor()
     
     //// Gradient Declarations
     let gradientAbove = CGGradientCreateWithColors(
