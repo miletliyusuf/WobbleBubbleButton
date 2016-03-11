@@ -39,7 +39,7 @@ Simply add the following line to your Podfile:
 platform :ios, '8.0' 
 use_frameworks!
 
-pod 'WobbleBubbleButton', '~> 0.0.2' 
+pod 'WobbleBubbleButton', '~> 0.0.3' 
 ```
 
 Then, run the following command:
