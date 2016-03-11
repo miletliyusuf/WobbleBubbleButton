@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "WobbleBubbleButton"
-  s.version      = "0.0.2"
+  s.version      = "0.0.4"
   s.summary      = "Create wobble bubble buttons that same as in Game Center, although it does not look like much. Written by Swift."
 
   s.description  = <<-DESC

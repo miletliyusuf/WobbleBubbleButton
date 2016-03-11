@@ -1,0 +1,366 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D93788251C92ACFF0027965B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93788241C92ACFF0027965B /* AppDelegate.swift */; };
+		D93788271C92ACFF0027965B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93788261C92ACFF0027965B /* ViewController.swift */; };
+		D937882A1C92ACFF0027965B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D93788281C92ACFF0027965B /* Main.storyboard */; };
+		D937882C1C92ACFF0027965B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D937882B1C92ACFF0027965B /* Assets.xcassets */; };
+		D937882F1C92ACFF0027965B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D937882D1C92ACFF0027965B /* LaunchScreen.storyboard */; };
+		D937883C1C92ADA90027965B /* WobbleBubbleButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D937883B1C92AD7F0027965B /* WobbleBubbleButton.framework */; };
+		D937883D1C92ADA90027965B /* WobbleBubbleButton.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D937883B1C92AD7F0027965B /* WobbleBubbleButton.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D937883A1C92AD7F0027965B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D93788361C92AD7F0027965B /* WobbleBubbleButton.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D93788051C92A9EC0027965B;
+			remoteInfo = WobbleBubbleButton;
+		};
+		D937883E1C92ADA90027965B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D93788361C92AD7F0027965B /* WobbleBubbleButton.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D93788041C92A9EC0027965B;
+			remoteInfo = WobbleBubbleButton;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D93788401C92ADA90027965B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D937883D1C92ADA90027965B /* WobbleBubbleButton.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		D93788211C92ACFF0027965B /* iOS Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D93788241C92ACFF0027965B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D93788261C92ACFF0027965B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D93788291C92ACFF0027965B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D937882B1C92ACFF0027965B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D937882E1C92ACFF0027965B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D93788301C92ACFF0027965B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D93788361C92AD7F0027965B /* WobbleBubbleButton.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WobbleBubbleButton.xcodeproj; path = ../WobbleBubbleButton.xcodeproj; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D937881E1C92ACFF0027965B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D937883C1C92ADA90027965B /* WobbleBubbleButton.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D93788181C92ACFE0027965B = {
+			isa = PBXGroup;
+			children = (
+				D93788231C92ACFF0027965B /* iOS Sample */,
+				D93788221C92ACFF0027965B /* Products */,
+				D93788361C92AD7F0027965B /* WobbleBubbleButton.xcodeproj */,
+			);
+			sourceTree = "<group>";
+		};
+		D93788221C92ACFF0027965B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D93788211C92ACFF0027965B /* iOS Sample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D93788231C92ACFF0027965B /* iOS Sample */ = {
+			isa = PBXGroup;
+			children = (
+				D93788241C92ACFF0027965B /* AppDelegate.swift */,
+				D93788261C92ACFF0027965B /* ViewController.swift */,
+				D93788281C92ACFF0027965B /* Main.storyboard */,
+				D937882B1C92ACFF0027965B /* Assets.xcassets */,
+				D937882D1C92ACFF0027965B /* LaunchScreen.storyboard */,
+				D93788301C92ACFF0027965B /* Info.plist */,
+			);
+			path = "iOS Sample";
+			sourceTree = "<group>";
+		};
+		D93788371C92AD7F0027965B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D937883B1C92AD7F0027965B /* WobbleBubbleButton.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D93788201C92ACFF0027965B /* iOS Sample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D93788331C92ACFF0027965B /* Build configuration list for PBXNativeTarget "iOS Sample" */;
+			buildPhases = (
+				D937881D1C92ACFF0027965B /* Sources */,
+				D937881E1C92ACFF0027965B /* Frameworks */,
+				D937881F1C92ACFF0027965B /* Resources */,
+				D93788401C92ADA90027965B /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D937883F1C92ADA90027965B /* PBXTargetDependency */,
+			);
+			name = "iOS Sample";
+			productName = "iOS Sample";
+			productReference = D93788211C92ACFF0027965B /* iOS Sample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D93788191C92ACFE0027965B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "ABC Virtual Communications";
+				TargetAttributes = {
+					D93788201C92ACFF0027965B = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = D937881C1C92ACFE0027965B /* Build configuration list for PBXProject "iOS Sample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D93788181C92ACFE0027965B;
+			productRefGroup = D93788221C92ACFF0027965B /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D93788371C92AD7F0027965B /* Products */;
+					ProjectRef = D93788361C92AD7F0027965B /* WobbleBubbleButton.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				D93788201C92ACFF0027965B /* iOS Sample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D937883B1C92AD7F0027965B /* WobbleBubbleButton.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = WobbleBubbleButton.framework;
+			remoteRef = D937883A1C92AD7F0027965B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D937881F1C92ACFF0027965B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D937882F1C92ACFF0027965B /* LaunchScreen.storyboard in Resources */,
+				D937882C1C92ACFF0027965B /* Assets.xcassets in Resources */,
+				D937882A1C92ACFF0027965B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D937881D1C92ACFF0027965B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D93788271C92ACFF0027965B /* ViewController.swift in Sources */,
+				D93788251C92ACFF0027965B /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D937883F1C92ADA90027965B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WobbleBubbleButton;
+			targetProxy = D937883E1C92ADA90027965B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D93788281C92ACFF0027965B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D93788291C92ACFF0027965B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D937882D1C92ACFF0027965B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D937882E1C92ACFF0027965B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D93788311C92ACFF0027965B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D93788321C92ACFF0027965B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D93788341C92ACFF0027965B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = "iOS Sample/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.abcv.iOS-Sample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D93788351C92ACFF0027965B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = "iOS Sample/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.abcv.iOS-Sample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D937881C1C92ACFE0027965B /* Build configuration list for PBXProject "iOS Sample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D93788311C92ACFF0027965B /* Debug */,
+				D93788321C92ACFF0027965B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D93788331C92ACFF0027965B /* Build configuration list for PBXNativeTarget "iOS Sample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D93788341C92ACFF0027965B /* Debug */,
+				D93788351C92ACFF0027965B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D93788191C92ACFE0027965B /* Project object */;
+}
