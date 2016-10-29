@@ -3,7 +3,7 @@
 //  WobbleBubbleButton
 //
 //  Created by Quang Tran on 3/11/16.
-//  Copyright © 2016 ABC Virtual Communications. All rights reserved.
+//  Copyright © 2016 Quang Tran. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

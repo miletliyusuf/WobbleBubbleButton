@@ -3,26 +3,26 @@
 //  AnimatedBubbleButton
 //
 //  Created by Quang Tran on 3/10/16.
-//  Copyright © 2016 ABC Virtual Communications. All rights reserved.
+//  Copyright © 2016 Quang Tran. All rights reserved.
 //
 
 import UIKit
 
 @IBDesignable
-public class WobbleBubbleButton: UIButton {
+open class WobbleBubbleButton: UIButton {
   
-  override public func awakeFromNib() {
+  override open func awakeFromNib() {
     addAnimationForView(self)
   }
   
-  private func random(min min: Double, max: Double) -> Double {
+  fileprivate func random(min: Double, max: Double) -> Double {
     return Double(arc4random()) / 0xFFFFFFFF * (max - min) + min
   }
   
   //
   //  Refering on http://stackoverflow.com/questions/23927047/button-animate-like-ios-game-center-button
   //
-  private func addAnimationForView(view: UIView) {
+  fileprivate func addAnimationForView(_ view: UIView) {
     
     //create an animation to follow a circular path
     let pathAnimation = CAKeyframeAnimation(keyPath: "position")
@@ -31,7 +31,7 @@ public class WobbleBubbleButton: UIButton {
     pathAnimation.calculationMode = kCAAnimationPaced
     //apply transformation at the end of animation (not really needed since it runs forever)
     pathAnimation.fillMode = kCAFillModeForwards;
-    pathAnimation.removedOnCompletion = false;
+    pathAnimation.isRemovedOnCompletion = false;
     //run forever
     pathAnimation.repeatCount = Float.infinity;
     //no ease in/out to have the same speed along the path
@@ -42,16 +42,17 @@ public class WobbleBubbleButton: UIButton {
     //The circle to follow will be inside the circleContainer frame.
     //it should be a frame around the center of your view to animate.
     //do not make it to large, a width/height of 3-4 will be enough.
-    let curvedPath = CGPathCreateMutable()
-    let circleContainer = CGRectInset(view.frame, 23/50 * view.frame.size.width, 23/50 * view.frame.size.height)
-    CGPathAddEllipseInRect(curvedPath, nil, circleContainer);
+    let curvedPath = CGMutablePath()
+    let circleContainer = view.frame.insetBy(dx: 23/50 * view.frame.size.width, dy: 23/50 * view.frame.size.height)
+//    CGPathAddEllipseInRect(curvedPath, nil, circleContainer);
+    curvedPath.addEllipse(in: circleContainer)
     
     //add the path to the animation
     pathAnimation.path = curvedPath;
     //release path
     //    CGPathRelease(curvedPath);
     //add animation to the view's layer
-    view.layer.addAnimation(pathAnimation, forKey: "myCircleAnimation")
+    view.layer.add(pathAnimation, forKey: "myCircleAnimation")
     
     //create an animation to scale the width of the view
     let scaleX = CAKeyframeAnimation(keyPath: "transform.scale.x")
@@ -62,14 +63,15 @@ public class WobbleBubbleButton: UIButton {
     //time percentage when the values above will be reached.
     //i.e. 1.05 will be reached just as half the duration has passed.
     let scaleXTime = random(min: 1, max: 3)
-    scaleX.keyTimes = [0.0, scaleXTime/2, scaleXTime]
+//    scaleX.keyTimes = [0.0, scaleXTime/2, scaleXTime]
+    scaleX.keyTimes = [0.0, NSNumber(value: scaleXTime/2), NSNumber(value: scaleXTime)]
     scaleX.repeatCount = Float.infinity;
     //play animation backwards on repeat (not really needed since it scales back to 1)
     scaleX.autoreverses = true
     //ease in/out animation for more natural look
     scaleX.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)
     //add the animation to the view's layer
-    view.layer.addAnimation(scaleX, forKey: "scaleXAnimation")
+    view.layer.add(scaleX, forKey: "scaleXAnimation")
     
     //create the height-scale animation just like the width one above
     //but slightly increased duration so they will not animate synchronously
@@ -77,11 +79,11 @@ public class WobbleBubbleButton: UIButton {
     scaleY.duration = 2.5
     scaleY.values = [1.0, 1.05, 1.0]
     let scaleYTime = random(min: 1, max: 3)
-    scaleY.keyTimes = [0.0, scaleYTime/2, scaleYTime]
+    scaleY.keyTimes = [0.0, NSNumber(value: scaleYTime/2), NSNumber(value: scaleYTime)]
     scaleY.repeatCount = Float.infinity
     scaleY.autoreverses = true
     scaleX.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)
-    view.layer.addAnimation(scaleY, forKey: "scaleYAnimation")
+    view.layer.add(scaleY, forKey: "scaleYAnimation")
   }
   
   //
@@ -89,7 +91,7 @@ public class WobbleBubbleButton: UIButton {
   // Refering on https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ApplicationKit/Classes/NSColor_Class/#//apple_ref/occ/instm/NSColor/blendedColorWithFraction:ofColor:
   // http://stackoverflow.com/questions/32293210/no-visible-interface-for-uicolor-declares-the-selector-blendedcolorwithfract
   //
-  override public func drawRect(rect: CGRect) {
+  override open func draw(_ rect: CGRect) {
     
     clipsToBounds = true
     layer.cornerRadius = frame.size.width/2
@@ -105,103 +107,100 @@ public class WobbleBubbleButton: UIButton {
     let whiteTransparent = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.000)
     let black = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
     let grey = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.727)
-    let backgroundColor = self.backgroundColor ?? UIColor.clearColor()
+    let backgroundColor = self.backgroundColor ?? UIColor.clear
     
     //// Gradient Declarations
-    let gradientAbove = CGGradientCreateWithColors(
-                        CGColorSpaceCreateDeviceRGB(),
-                        [
-                          white.CGColor,
-                          white.blendedColorWithFraction(0.5, ofColor: whiteTransparent).CGColor,
-                          whiteTransparent.CGColor,
-                          whiteTransparent.CGColor
-                        ],
-                        [0, 0.21, 0.64, 1])!
+    let gradientAbove = CGGradient(
+                        colorsSpace: CGColorSpaceCreateDeviceRGB(),
+                        colors: [
+                          white.cgColor,
+                          white.blendedColorWithFraction(0.5, ofColor: whiteTransparent).cgColor,
+                          whiteTransparent.cgColor,
+                          whiteTransparent.cgColor
+                        ] as CFArray,
+                        locations: [0, 0.21, 0.64, 1])!
     
-    let outerGradient = CGGradientCreateWithColors(
-                        CGColorSpaceCreateDeviceRGB(),
-                        [
-                          whiteTransparent.CGColor,
-                          whiteTransparent.blendedColorWithFraction(0.5, ofColor: black).CGColor,
-                          black.CGColor
-                        ],
-                        [0, 1, 1])!
+    let outerGradient = CGGradient(
+                        colorsSpace: CGColorSpaceCreateDeviceRGB(),
+                        colors: [
+                          whiteTransparent.cgColor,
+                          whiteTransparent.blendedColorWithFraction(0.5, ofColor: black).cgColor,
+                          black.cgColor
+                        ] as CFArray,
+                        locations: [0, 1, 1])!
     
-    let gradienBelow = CGGradientCreateWithColors(
-                        CGColorSpaceCreateDeviceRGB(),
-                        [
-                          whiteTransparent.CGColor,
-                          whiteTransparent.blendedColorWithFraction(0.5, ofColor: whiteTransparent).CGColor,
-                          whiteTransparent.CGColor,
-                          whiteTransparent.blendedColorWithFraction(0.5, ofColor: grey).CGColor,
-                          grey.CGColor
-                        ],
-                        [0, 0.28, 0.28, 1, 1])!
+    let gradienBelow = CGGradient(
+                        colorsSpace: CGColorSpaceCreateDeviceRGB(),
+                        colors: [
+                          whiteTransparent.cgColor,
+                          whiteTransparent.blendedColorWithFraction(0.5, ofColor: whiteTransparent).cgColor,
+                          whiteTransparent.cgColor,
+                          whiteTransparent.blendedColorWithFraction(0.5, ofColor: grey).cgColor,
+                          grey.cgColor
+                        ] as CFArray,
+                        locations: [0, 0.28, 0.28, 1, 1])!
     
     //// BackgroundCircle Drawing
-    let backgroundCirclePath = UIBezierPath(ovalInRect: CGRectMake(0, 0, frame.size.width, frame.size.height))
+    let backgroundCirclePath = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
     backgroundColor.setFill()
     backgroundCirclePath.fill()
     
     
     //// OuterCircle Drawing
-    let outerCirclePath = UIBezierPath(ovalInRect: CGRectMake(0, 0, frame.size.width, frame.size.height))
-    CGContextSaveGState(context)
+    let outerCirclePath = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
+    context?.saveGState()
     outerCirclePath.addClip()
-    CGContextDrawRadialGradient(context,
-                                outerGradient,
-                                CGPointMake(30/60 * frame.size.width, 33.66/60 * frame.size.height),
-                                26.14/60*frame.size.height,
-                                CGPointMake(30/60 * frame.size.width, 30/60*frame.size.height),
-                                30/60*frame.size.height,
-                                [
-                                  CGGradientDrawingOptions.DrawsBeforeStartLocation,
-                                  CGGradientDrawingOptions.DrawsAfterEndLocation
+    context?.drawRadialGradient(outerGradient,
+                                startCenter: CGPoint(x: 30/60 * frame.size.width, y: 33.66/60 * frame.size.height),
+                                startRadius: 26.14/60*frame.size.height,
+                                endCenter: CGPoint(x: 30/60 * frame.size.width, y: 30/60*frame.size.height),
+                                endRadius: 30/60*frame.size.height,
+                                options: [
+                                  CGGradientDrawingOptions.drawsBeforeStartLocation,
+                                  CGGradientDrawingOptions.drawsAfterEndLocation
                                 ])
-    CGContextRestoreGState(context)
+    context?.restoreGState()
     
     
     //// OvalAbove Drawing
-    let ovalAbovePath = UIBezierPath(ovalInRect: CGRectMake(12/60 * frame.size.width,
-                                                            1/60 * frame.size.height,
-                                                            36/60 * frame.size.width,
-                                                            28/60 * frame.size.height))
-    CGContextSaveGState(context)
+    let ovalAbovePath = UIBezierPath(ovalIn: CGRect(x: 12/60 * frame.size.width,
+                                                            y: 1/60 * frame.size.height,
+                                                            width: 36/60 * frame.size.width,
+                                                            height: 28/60 * frame.size.height))
+    context?.saveGState()
     ovalAbovePath.addClip()
-    CGContextDrawLinearGradient(context,
-                                gradientAbove,
-                                CGPointMake(30/60*frame.size.width, 1/60*frame.size.height),
-                                CGPointMake(30/60*frame.size.width, 29/60*frame.size.height),
-                                CGGradientDrawingOptions())
-    CGContextRestoreGState(context)
+    context?.drawLinearGradient(gradientAbove,
+                                start: CGPoint(x: 30/60*frame.size.width, y: 1/60*frame.size.height),
+                                end: CGPoint(x: 30/60*frame.size.width, y: 29/60*frame.size.height),
+                                options: CGGradientDrawingOptions())
+    context?.restoreGState()
     
     
     //// OvalBelow Drawing
-    let ovalBelowPath = UIBezierPath(ovalInRect: CGRectMake(7/60 * frame.size.width,
-                                                            25.5/60 * frame.size.height,
-                                                            46/60 * frame.size.width,
-                                                            34/60 * frame.size.height))
-    CGContextSaveGState(context)
+    let ovalBelowPath = UIBezierPath(ovalIn: CGRect(x: 7/60 * frame.size.width,
+                                                            y: 25.5/60 * frame.size.height,
+                                                            width: 46/60 * frame.size.width,
+                                                            height: 34/60 * frame.size.height))
+    context?.saveGState()
     ovalBelowPath.addClip()
-    CGContextDrawLinearGradient(context,
-                                gradienBelow,
-                                CGPointMake(30/60*frame.size.width, 25.5/60*frame.size.height),
-                                CGPointMake(30/60*frame.size.width, 59.5/60*frame.size.height),
-                                CGGradientDrawingOptions())
-    CGContextRestoreGState(context)
+    context?.drawLinearGradient(gradienBelow,
+                                start: CGPoint(x: 30/60*frame.size.width, y: 25.5/60*frame.size.height),
+                                end: CGPoint(x: 30/60*frame.size.width, y: 59.5/60*frame.size.height),
+                                options: CGGradientDrawingOptions())
+    context?.restoreGState()
   }
 }
 
 extension UIColor {
   
-  private func interpolate(a: CGFloat, b: CGFloat, fraction: CGFloat) -> CGFloat {
+  fileprivate func interpolate(_ a: CGFloat, b: CGFloat, fraction: CGFloat) -> CGFloat {
     return (a + ((b - a) * fraction))
   }
   
   //
   // Refering on https://github.com/heardrwt/RHAdditions/blob/54cbf5735fce73129a21c23c8f23233e5638d006/RHAdditions/UIColor%2BRHInterpolationAdditions.m
   //
-  internal func blendedColorWithFraction(fraction: CGFloat, ofColor endColor: UIColor) -> UIColor {
+  internal func blendedColorWithFraction(_ fraction: CGFloat, ofColor endColor: UIColor) -> UIColor {
     
     if fraction <= 0.0 { return self }
     
@@ -217,7 +216,7 @@ extension UIColor {
     var c2:CGFloat = 0
     var d2:CGFloat = 0
     
-    if UIColor.instancesRespondToSelector("getWhite:alpha:") {
+    if UIColor.instancesRespond(to: #selector(UIColor.getWhite(_:alpha:))) {
       //white
       if getWhite(&a1, alpha: &b1) && endColor.getWhite(&a2, alpha: &b2) {
         return UIColor(white: interpolate(a1, b: a2, fraction: fraction),
@@ -244,6 +243,6 @@ extension UIColor {
     }
     
     //error
-    return UIColor.redColor();
+    return UIColor.red;
   }
 }
