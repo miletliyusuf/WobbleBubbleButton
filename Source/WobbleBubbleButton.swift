@@ -52,10 +52,11 @@ open class WobbleBubbleButton: UIButton {
     override open func awakeFromNib() {
         addAnimationForView(self)
         addParallaxToView(self)
+        getBaloonsFromUniverse()
     }
     
     fileprivate func addParallaxToView(_ vw: UIView) {
-        let amount = 20
+        let amount = 40
         
         let horizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
         horizontal.minimumRelativeValue = -amount
@@ -74,10 +75,19 @@ open class WobbleBubbleButton: UIButton {
         return Double(arc4random()) / 0xFFFFFFFF * (max - min) + min
     }
     
+    fileprivate func getBaloonsFromUniverse() {
+        let instanceFrame = self.frame
+        self.frame = CGRect.init(x: -200, y: -200, width: self.frame.size.width, height: self.frame.size.height)
+        UIView.animate(withDuration: 2.0) {
+            self.frame = instanceFrame
+        }
+    }
+    
     //
     //  Refering on http://stackoverflow.com/questions/23927047/button-animate-like-ios-game-center-button
     //
     fileprivate func addAnimationForView(_ view: UIView) {
+        
         //create an animation to follow a circular path
         let pathAnimation = CAKeyframeAnimation(keyPath: "position")
         
@@ -148,5 +158,22 @@ open class WobbleBubbleButton: UIButton {
     override open func draw(_ rect: CGRect) {
         clipsToBounds = true
         layer.cornerRadius = frame.size.width/2
+    }
+}
+
+extension UIView {
+    func fadeIn(delay:Double? = nil) {
+        // Move our fade out code from earlier
+        UIView.animate(withDuration: 0.5, delay: delay != nil ? delay! : 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+            self.alpha = 1.0
+            //            self.transform = self.transform.scaledBy(x: 2, y: 2)
+        }, completion: nil)
+    }
+    
+    func fadeOut(delay:Double? = nil) {
+        UIView.animate(withDuration: 0.5, delay: delay != nil ? delay! : 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            self.alpha = 0.0
+            self.transform = self.transform.scaledBy(x: 0.5, y: 0.5)
+        }, completion: nil)
     }
 }
