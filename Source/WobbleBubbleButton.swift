@@ -77,7 +77,7 @@ open class WobbleBubbleButton: UIButton {
     
     fileprivate func getBaloonsFromUniverse() {
         let instanceFrame = self.frame
-        self.frame = CGRect.init(x: -200, y: -200, width: self.frame.size.width, height: self.frame.size.height)
+        self.frame = CGRect.init(x: screenSize.width/2, y: screenSize.height + 400, width: self.frame.size.width, height: self.frame.size.height)
         UIView.animate(withDuration: 2.0) {
             self.frame = instanceFrame
         }
