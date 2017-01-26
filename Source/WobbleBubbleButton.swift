@@ -11,6 +11,8 @@ import UIKit
 @IBDesignable
 open class WobbleBubbleButton: UIButton {
     
+    public var bgImage:UIImage!
+    
     let screenSize: CGRect = UIScreen.main.bounds
     
     @IBInspectable var fittedBGImage: UIImage? {
@@ -43,7 +45,7 @@ open class WobbleBubbleButton: UIButton {
             imView.image = self.fittedBGImage
             self.addSubview(imView)
             
-            
+            self.bgImage = self.fittedBGImage
         }
     }
     
