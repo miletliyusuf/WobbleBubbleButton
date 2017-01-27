@@ -50,9 +50,9 @@ open class WobbleBubbleButton: UIButton {
     }
     
     override open func awakeFromNib() {
-        addAnimationForView(self)
-        addParallaxToView(self)
+        self.addParallaxToView(self)
         getBaloonsFromUniverse()
+        self.addAnimationForView(self)
     }
     
     fileprivate func addParallaxToView(_ vw: UIView) {
@@ -76,10 +76,10 @@ open class WobbleBubbleButton: UIButton {
     }
     
     fileprivate func getBaloonsFromUniverse() {
-        let instanceFrame = self.frame
-        self.frame = CGRect.init(x: screenSize.width/2, y: screenSize.height + 400, width: self.frame.size.width, height: self.frame.size.height)
+        let instanceOrigin = self.frame.origin
+        self.frame.origin = CGPoint.init(x: screenSize.width/2, y: screenSize.height + 400)
         UIView.animate(withDuration: 2.0) {
-            self.frame = instanceFrame
+            self.frame.origin = instanceOrigin
         }
     }
     
@@ -107,8 +107,10 @@ open class WobbleBubbleButton: UIButton {
         //it should be a frame around the center of your view to animate.
         //do not make it to large, a width/height of 3-4 will be enough.
         let curvedPath = CGMutablePath()
-        let circleContainer = view.frame.insetBy(dx: 23/50 * view.frame.size.width, dy: 23/50 * view.frame.size.height)
-        //    CGPathAddEllipseInRect(curvedPath, nil, circleContainer);
+//        path.addLine(to: CGPoint(x: 10.0, y: 10.0))
+
+        let circleContainer = view.frame.insetBy(dx: 25/50 * view.frame.size.width, dy: 23/50 * view.frame.size.height)
+        
         curvedPath.addEllipse(in: circleContainer)
         
         //add the path to the animation
@@ -116,7 +118,11 @@ open class WobbleBubbleButton: UIButton {
         //release path
         //    CGPathRelease(curvedPath);
         //add animation to the view's layer
-        view.layer.add(pathAnimation, forKey: "myCircleAnimation")
+        let delay = DispatchTime.now() + .seconds(10/4)
+        
+        DispatchQueue.main.asyncAfter(deadline: delay) {
+            view.layer.add(pathAnimation, forKey: "myCircleAnimation")
+        }
         
         //create an animation to scale the width of the view
         let scaleX = CAKeyframeAnimation(keyPath: "transform.scale.x")
@@ -136,18 +142,18 @@ open class WobbleBubbleButton: UIButton {
         scaleX.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)
         //add the animation to the view's layer
         view.layer.add(scaleX, forKey: "scaleXAnimation")
-        
-        //create the height-scale animation just like the width one above
-        //but slightly increased duration so they will not animate synchronously
-        let scaleY = CAKeyframeAnimation(keyPath: "transform.scale.y")
-        scaleY.duration = 2.5
-        scaleY.values = [1.0, 1.05, 1.0]
-        let scaleYTime = random(min: 1, max: 3)
-        scaleY.keyTimes = [0.0, NSNumber(value: scaleYTime/2), NSNumber(value: scaleYTime)]
-        scaleY.repeatCount = Float.infinity
-        scaleY.autoreverses = true
-        scaleX.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)
-        view.layer.add(scaleY, forKey: "scaleYAnimation")
+//
+//        //create the height-scale animation just like the width one above
+//        //but slightly increased duration so they will not animate synchronously
+//        let scaleY = CAKeyframeAnimation(keyPath: "transform.scale.y")
+//        scaleY.duration = 2.5
+//        scaleY.values = [1.0, 1.05, 1.0]
+//        let scaleYTime = random(min: 1, max: 3)
+//        scaleY.keyTimes = [0.0, NSNumber(value: scaleYTime/2), NSNumber(value: scaleYTime)]
+//        scaleY.repeatCount = Float.infinity
+//        scaleY.autoreverses = true
+//        scaleX.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)
+//        view.layer.add(scaleY, forKey: "scaleYAnimation")
     }
     
     //
