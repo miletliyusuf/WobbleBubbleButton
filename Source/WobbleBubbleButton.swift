@@ -109,10 +109,25 @@ open class WobbleBubbleButton: UIButton {
         let curvedPath = CGMutablePath()
 //        path.addLine(to: CGPoint(x: 10.0, y: 10.0))
 
-        let circleContainer = view.frame.insetBy(dx: 25/50 * view.frame.size.width, dy: 23/50 * view.frame.size.height)
+//        let circleContainer = view.frame.insetBy(dx: 25/50 * view.frame.size.width, dy: 23/50 * view.frame.size.height)
         
-        curvedPath.addEllipse(in: circleContainer)
-        
+//        curvedPath.addEllipse(in: circleContainer)
+        var startOrigin = self.frame.origin
+        startOrigin.x = startOrigin.x + self.frame.size.width / 2
+        startOrigin.y = startOrigin.y + self.frame.size.width / 2
+        var topOrigin = startOrigin
+        topOrigin.x = topOrigin.x + CGFloat(random(min: 0, max: 20))
+        topOrigin.y = topOrigin.y + CGFloat(random(min: 0, max: 20))
+        var rightOrigin = topOrigin
+        rightOrigin.x = rightOrigin.x + CGFloat(random(min: 0, max: 20))
+        rightOrigin.y = rightOrigin.y - CGFloat(random(min: 0, max: 20))
+        var bottomOrigin = rightOrigin
+        bottomOrigin.x = bottomOrigin.x - CGFloat(random(min: 0, max: 20))
+        bottomOrigin.y = bottomOrigin.y + CGFloat(random(min: 0, max: 20))
+        let endOrigin = startOrigin
+//        endOrigin.x = endOrigin.x + CGFloat(random(min: -10, max: 10))
+//        endOrigin.y = endOrigin.y + CGFloat(random(min: -10, max: 10))
+        curvedPath.addLines(between: [startOrigin,topOrigin,rightOrigin,bottomOrigin,endOrigin])
         //add the path to the animation
         pathAnimation.path = curvedPath;
         //release path
@@ -123,37 +138,6 @@ open class WobbleBubbleButton: UIButton {
         DispatchQueue.main.asyncAfter(deadline: delay) {
             view.layer.add(pathAnimation, forKey: "myCircleAnimation")
         }
-        
-        //create an animation to scale the width of the view
-        let scaleX = CAKeyframeAnimation(keyPath: "transform.scale.x")
-        //set the duration
-        scaleX.duration = 2
-        //it starts from scale factor 1, scales to 1.05 and back to 1
-        scaleX.values = [1, 1.05, 1]
-        //time percentage when the values above will be reached.
-        //i.e. 1.05 will be reached just as half the duration has passed.
-        let scaleXTime = random(min: 1, max: 3)
-        //    scaleX.keyTimes = [0.0, scaleXTime/2, scaleXTime]
-        scaleX.keyTimes = [0.0, NSNumber(value: scaleXTime/2), NSNumber(value: scaleXTime)]
-        scaleX.repeatCount = Float.infinity;
-        //play animation backwards on repeat (not really needed since it scales back to 1)
-        scaleX.autoreverses = true
-        //ease in/out animation for more natural look
-        scaleX.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)
-        //add the animation to the view's layer
-        view.layer.add(scaleX, forKey: "scaleXAnimation")
-//
-//        //create the height-scale animation just like the width one above
-//        //but slightly increased duration so they will not animate synchronously
-//        let scaleY = CAKeyframeAnimation(keyPath: "transform.scale.y")
-//        scaleY.duration = 2.5
-//        scaleY.values = [1.0, 1.05, 1.0]
-//        let scaleYTime = random(min: 1, max: 3)
-//        scaleY.keyTimes = [0.0, NSNumber(value: scaleYTime/2), NSNumber(value: scaleYTime)]
-//        scaleY.repeatCount = Float.infinity
-//        scaleY.autoreverses = true
-//        scaleX.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)
-//        view.layer.add(scaleY, forKey: "scaleYAnimation")
     }
     
     //
