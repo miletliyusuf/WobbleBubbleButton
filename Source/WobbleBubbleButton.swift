@@ -56,7 +56,7 @@ open class WobbleBubbleButton: UIButton {
     }
     
     fileprivate func addParallaxToView(_ vw: UIView) {
-        let amount = 40
+        let amount = 25
         
         let horizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
         horizontal.minimumRelativeValue = -amount
