@@ -18,24 +18,7 @@ public class WobbleBubbleButton: UIButton {
     public var durationBubbleComeToView: Double = 2.0
     
     public var fittedBGImage: UIImage? {
-        
         didSet {
-            var bFrame = self.frame
-            bFrame.size.width = screenSize.width / 2.41 //2.41 = 375 / 155
-            bFrame.size.height = bFrame.size.width
-            
-            if bFrame.origin.x + 25 > screenSize.width - bFrame.size.width {
-                bFrame.origin.x = screenSize.width - bFrame.size.width + 25
-            }
-            if bFrame.origin.x < -30 {
-                bFrame.origin.x = -30
-            }
-            if bFrame.origin.y > screenSize.height - bFrame.size.height - 64 {
-                bFrame.origin.y = screenSize.height - bFrame.size.height - 64
-            }
-            
-            self.frame = bFrame
-            
             let imView = UIImageView.init(frame: self.frame)
             imView.contentMode = .ScaleAspectFit
             var imageViewFrame = imView.frame
@@ -46,19 +29,37 @@ public class WobbleBubbleButton: UIButton {
             imView.frame = imageViewFrame
             imView.image = self.fittedBGImage
             self.addSubview(imView)
-            
-            self.bgImage = self.fittedBGImage
-            var size = self.frame.size
-            self.layer.cornerRadius = size.width / 2
         }
     }
     
     override public func awakeFromNib() {
+        self.setAppearFrames()
         self.addParallaxToView(self)
         getBaloonsFromUniverse()
         self.addAnimationForView(self)
     }
     
+    func setAppearFrames() {
+        var bFrame = self.frame
+        bFrame.size.width = screenSize.width / 2.41 //2.41 = 375 / 155
+        bFrame.size.height = bFrame.size.width
+        
+        if bFrame.origin.x + 25 > screenSize.width - bFrame.size.width {
+            bFrame.origin.x = screenSize.width - bFrame.size.width + 25
+        }
+        if bFrame.origin.x < -30 {
+            bFrame.origin.x = -30
+        }
+        if bFrame.origin.y > screenSize.height - bFrame.size.height - 64 {
+            bFrame.origin.y = screenSize.height - bFrame.size.height - 64
+        }
+        
+        self.frame = bFrame
+        
+        self.bgImage = self.fittedBGImage
+        var size = self.frame.size
+        self.layer.cornerRadius = size.width / 2
+    }
     
     func addParallaxToView(_ vw: UIView) {
         let amount = 25
