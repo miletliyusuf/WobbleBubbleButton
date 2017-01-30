@@ -14,6 +14,8 @@ public class WobbleBubbleButton: UIButton {
     public var bgImage:UIImage!
     
     let screenSize: CGRect = UIScreen.mainScreen().bounds
+    public var durationBubbleAppear: Double = 2.0
+    public var durationBubbleComeToView: Double = 2.0
     
     public var fittedBGImage: UIImage? {
         
@@ -82,7 +84,7 @@ public class WobbleBubbleButton: UIButton {
     func getBaloonsFromUniverse() {
         let instanceOrigin = self.frame.origin
         self.frame.origin = CGPoint.init(x: screenSize.width/2, y: screenSize.height + 400)
-        UIView.animateWithDuration(2.0) {
+        UIView.animateWithDuration(durationBubbleComeToView) {
             self.frame.origin = instanceOrigin
             
         }
@@ -139,22 +141,12 @@ public class WobbleBubbleButton: UIButton {
         
         //add the path to the animdation
         pathAnimation.path = curvedPath;
-        //release path
-        //    CGPathRelease(curvedPath);
-        //add animation to the view's layer
-        //let delay = DispatchTime.now() + .seconds(10/4)
-        //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW,(2.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), {
-        //            view.layer.addAnimation(pathAnimation, forKey: "myCircleAnimation")
-        //            });
         
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
+        let delay = durationBubbleAppear * Double(NSEC_PER_SEC)
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue(), {
             view.layer.addAnimation(pathAnimation, forKey: "myCircleAnimation")
-        }
-        
-        //        DispatchQueue.main.asyncAfter(deadline: delay) {
-        //            view.layer.add(pathAnimation, forKey: "myCircleAnimation")
-        //        }
+        })
         
     }
     
