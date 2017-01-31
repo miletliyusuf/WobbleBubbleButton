@@ -35,8 +35,8 @@ public class WobbleBubbleButton: UIButton {
     override public func awakeFromNib() {
         self.setAppearFrames()
         self.addParallaxToView(self)
-        getBaloonsFromUniverse()
-        self.addAnimationForView(self)
+        //getBaloonsFromUniverse()
+        //self.addAnimationForView(self)
     }
     
     func setAppearFrames() {
@@ -82,7 +82,7 @@ public class WobbleBubbleButton: UIButton {
         return Double(arc4random()) / 0xFFFFFFFF * (max - min) + min
     }
     
-    func getBaloonsFromUniverse() {
+    public func getBaloonsFromUniverse() {
         let instanceOrigin = self.frame.origin
         self.frame.origin = CGPoint.init(x: screenSize.width/2, y: screenSize.height + 400)
         UIView.animateWithDuration(durationBubbleComeToView) {
@@ -94,7 +94,7 @@ public class WobbleBubbleButton: UIButton {
     //
     //  Refering on http://stackoverflow.com/questions/23927047/button-animate-like-ios-game-center-button
     //
-    func addAnimationForView(_ view: UIView) {
+    public func addAnimationForView(_ view: UIView) {
         
         //create an animation to follow a circular path
         let pathAnimation = CAKeyframeAnimation(keyPath: "position")
