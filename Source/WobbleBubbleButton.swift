@@ -35,8 +35,25 @@ public class WobbleBubbleButton: UIButton {
     override public func awakeFromNib() {
         self.setAppearFrames()
         self.addParallaxToView(self)
-        //getBaloonsFromUniverse()
-        //self.addAnimationForView(self)
+    }
+    
+    public func setTitleAndSubTitleText(title:String,subTitle:String,font:UIFont? = nil,subTitleFont:UIFont?=nil) {
+        self.titleLabel?.lineBreakMode = .ByWordWrapping
+        self.titleLabel?.textAlignment = .Center
+        let attributedText = NSAttributedString(string: title + "\n",
+                                                attributes: [
+                                                    NSForegroundColorAttributeName: UIColor.whiteColor(),
+                                                    NSFontAttributeName: font != nil ? font! : UIFont.systemFontOfSize(24)
+            ])
+        let attributedDetailText = NSAttributedString(string: subTitle,
+                                                      attributes: [
+                                                        NSForegroundColorAttributeName: UIColor.whiteColor(),
+                                                        NSFontAttributeName: subTitleFont != nil ? subTitleFont! : UIFont.systemFontOfSize(15)
+            ])
+        let attributedCombinedText = NSMutableAttributedString()
+        attributedCombinedText.appendAttributedString(attributedText)
+        attributedCombinedText.appendAttributedString(attributedDetailText)
+        self.setAttributedTitle(attributedCombinedText, forState: UIControlState.Normal)
     }
     
     func setAppearFrames() {
@@ -169,16 +186,4 @@ extension UIView {
             
         }, completion: nil)
     }
-    
-    //    func fadeOut(delay:Double? = nil) {
-    //
-    //
-    //        UIView.animateWithDuration(0.5, delay: delay!, options: .CurveEaseOut, animations: {
-    //            self.alpha = 0.0
-    //            self.transform = self.transform.scaledBy(x: 0.5, y: 0.5)
-    //            //self.transform = self.transform.
-    //            self.tra
-    //            //TODO
-    //            }, completion: nil)
-    //    }
 }
