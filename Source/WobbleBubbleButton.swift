@@ -16,19 +16,20 @@ public class WobbleBubbleButton: UIButton {
     let screenSize: CGRect = UIScreen.mainScreen().bounds
     public var durationBubbleAppear: Double = 2.0
     public var durationBubbleComeToView: Double = 2.0
+    public var imageViewFitBackground:UIImageView!
     
     public var fittedBGImage: UIImage? {
         didSet {
-            let imView = UIImageView.init(frame: self.frame)
-            imView.contentMode = .ScaleAspectFit
-            var imageViewFrame = imView.frame
+            self.imageViewFitBackground = UIImageView.init(frame: self.frame)
+            self.imageViewFitBackground.contentMode = .ScaleAspectFit
+            var imageViewFrame = self.imageViewFitBackground.frame
             let heightRatio = self.frame.size.height / 1.82 // 1.82 = 155/85
             imageViewFrame.size.height = heightRatio
             imageViewFrame.origin.y = (self.frame.size.height - heightRatio) / 2
             imageViewFrame.origin.x = 0
-            imView.frame = imageViewFrame
-            imView.image = self.fittedBGImage
-            self.addSubview(imView)
+            self.imageViewFitBackground.frame = imageViewFrame
+            self.imageViewFitBackground.image = self.fittedBGImage
+            self.addSubview(self.imageViewFitBackground)
         }
     }
     
@@ -42,10 +43,10 @@ public class WobbleBubbleButton: UIButton {
         self.titleLabel?.textAlignment = .Center
         let attributedText = NSAttributedString(string: title + "\n",
                                                 attributes: [
-                                                    NSForegroundColorAttributeName: UIColor.whiteColor(),
+                                                    NSForegroundColorAttributeName: subTitle == "" ? UIColor.whiteColor() : UIColor.init(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.65),
                                                     NSFontAttributeName: font != nil ? font! : UIFont.systemFontOfSize(24)
             ])
-        let attributedDetailText = NSAttributedString(string: subTitle,
+        let attributedDetailText = NSAttributedString(string: "\n" + subTitle,
                                                       attributes: [
                                                         NSForegroundColorAttributeName: UIColor.whiteColor(),
                                                         NSFontAttributeName: subTitleFont != nil ? subTitleFont! : UIFont.systemFontOfSize(15)
@@ -57,22 +58,6 @@ public class WobbleBubbleButton: UIButton {
     }
     
     func setAppearFrames() {
-        var bFrame = self.frame
-        bFrame.size.width = screenSize.width / 2.41 //2.41 = 375 / 155
-        bFrame.size.height = bFrame.size.width
-        
-        if bFrame.origin.x + 25 > screenSize.width - bFrame.size.width {
-            bFrame.origin.x = screenSize.width - bFrame.size.width + 25
-        }
-        if bFrame.origin.x < -30 {
-            bFrame.origin.x = -30
-        }
-        if bFrame.origin.y > screenSize.height - bFrame.size.height - 64 {
-            bFrame.origin.y = screenSize.height - bFrame.size.height - 64
-        }
-        
-        self.frame = bFrame
-        
         self.bgImage = self.fittedBGImage
         var size = self.frame.size
         self.layer.cornerRadius = size.width / 2
