@@ -58,6 +58,12 @@ public class WobbleBubbleButton: UIButton {
     }
     
     func setAppearFrames() {
+        
+        if screenSize.width < 375 {
+            self.frame.size.width = self.frame.size.width / 1.4
+            self.frame.size.height = self.frame.size.height / 1.4
+        }
+        
         self.bgImage = self.fittedBGImage
         var size = self.frame.size
         self.layer.cornerRadius = size.width / 2
