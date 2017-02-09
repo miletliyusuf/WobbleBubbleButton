@@ -143,7 +143,7 @@
 					D93788201C92ACFF0027965B = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 8M63B65N66;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
